@@ -34,15 +34,9 @@ class Artisan
      */
     private $description;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Projet::class, mappedBy="artisan")
-     */
-    private $projets;
 
-    public function __construct()
-    {
-        $this->projets = new ArrayCollection();
-    }
+
+
 
     public function getId(): ?int
     {
@@ -81,36 +75,6 @@ class Artisan
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Projet[]
-     */
-    public function getProjets(): Collection
-    {
-        return $this->projets;
-    }
-
-    public function addProjet(Projet $projet): self
-    {
-        if (!$this->projets->contains($projet)) {
-            $this->projets[] = $projet;
-            $projet->setArtisan($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProjet(Projet $projet): self
-    {
-        if ($this->projets->removeElement($projet)) {
-            // set the owning side to null (unless already changed)
-            if ($projet->getArtisan() === $this) {
-                $projet->setArtisan(null);
-            }
-        }
 
         return $this;
     }

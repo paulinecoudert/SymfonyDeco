@@ -19,6 +19,33 @@ class ProjetRepository extends ServiceEntityRepository
         parent::__construct($registry, Projet::class);
     }
 
+    /**
+     * @return Projet[]
+     */
+
+    public function finAllDemande(): array
+    {
+
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.budget = 1000')
+
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Projet[]
+     */
+
+    public function findLatest(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.budget = 1000')
+            ->setMaxResults(2)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Projet[] Returns an array of Projet objects
     //  */

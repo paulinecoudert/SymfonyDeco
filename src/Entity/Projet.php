@@ -39,6 +39,11 @@ class Projet
      */
     private $dateDeDebut;
 
+    public function __construct()
+    {
+        $this->dateDeDebut = new \DateTime();
+    }
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -49,22 +54,13 @@ class Projet
      */
     private $statut;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projet")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
+
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $travaux;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=artisan::class, inversedBy="projets")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $artisan;
 
 
 
@@ -147,17 +143,7 @@ class Projet
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
 
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     public function getTravaux(): ?string
     {
@@ -167,18 +153,6 @@ class Projet
     public function setTravaux(string $travaux): self
     {
         $this->travaux = $travaux;
-
-        return $this;
-    }
-
-    public function getArtisan(): ?artisan
-    {
-        return $this->artisan;
-    }
-
-    public function setArtisan(?artisan $artisan): self
-    {
-        $this->artisan = $artisan;
 
         return $this;
     }
