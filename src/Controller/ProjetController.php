@@ -38,4 +38,13 @@ class ProjetController extends AbstractController
 
         return $this->render("front/projet.html.twig");
     }
+
+
+
+    #[Route("/projet/{slug}-{id}", name: 'front.show')]
+    public function show($slug, $id): Response
+    {
+        $projet = $this->repository->find($id);
+        return $this->render("front/show.html.twig", ['projet' => $projet,]);
+    }
 }

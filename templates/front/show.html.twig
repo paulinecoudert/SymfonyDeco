@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title projet.nom %}
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+     <div class="row">
+        <div class="col-md-8">
+
+            </div>
+            <div class="col-md-4">
+    <h1>{{ projet.nom}} </h1>
+     <h2>Travaux: {{ projet.travaux}} </h2>
+    <div class="text-primary" style="font-size: 2rem; font-weight: bold;">{{ projet.budget}} euros</div>
+    
+     <a href="#" class="btn btn-primary">Contacter le propriétaire</a>
+    </div>
+</div>
+</div>
+</div>
+<div class='container mt-4'>
+   
+
+        <div class="row">
+            <div class="col-md-8">
+                <h3 style="margin-bottom: 20px">Caractéristiques</h3>
+                   <p>{{ projet.description | nl2br }}</p>
+                <p>Budget: {{ projet.budget}} euros</p>
+                <p> Statut: {{ projet.statutType}}</p>
+ </div>
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

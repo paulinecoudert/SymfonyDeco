@@ -4,12 +4,17 @@ namespace App\Entity;
 
 use App\Repository\ProjetRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
 
 /**
  * @ORM\Entity(repositoryClass=ProjetRepository::class)
  */
 class Projet
 {
+    const STATUT = [
+        true => 'Finit',
+        false => 'A la recherche d\' un artisan '
+    ];
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -21,6 +26,7 @@ class Projet
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
+
 
     /**
      * @ORM\Column(type="float")
@@ -79,6 +85,11 @@ class Projet
         $this->nom = $nom;
 
         return $this;
+    }
+
+    public function getSlug(): string
+    {
+        return (new Slugify())->slugify($this->nom);
     }
 
     public function getBudget(): ?float
@@ -143,7 +154,10 @@ class Projet
         return $this;
     }
 
-
+    public function getStatutType(): string
+    {
+        return self::STATUT[$this->statut];
+    }
 
     public function getTravaux(): ?string
     {
