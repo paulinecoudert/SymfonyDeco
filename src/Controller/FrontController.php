@@ -16,7 +16,7 @@ class FrontController extends AbstractController
     public function index(ProjetRepository $repository): Response
     {
         $projetss = $repository->findLatest();
-        dump($projetss);
+
         return $this->render("front/index.html.twig", ['projetss' => $projetss]);
     }
 

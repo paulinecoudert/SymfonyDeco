@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Gerer les Projets' %}
+
+{% block body %}
+<div class='container mt-4'>
+    <h2> Gérer les biens</h2>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for proj in projets %}
+   
+                   
+                    <tr>
+                        <td>{{proj.nom }}</td>
+                        <td>
+                            <a href="{{ path ('admin.edit', {id: proj.id} ) }}" class="btn btn-secondary">Editer</a>
+                        </td>
+                        
+                    </tr>
+                     {% endfor %}
+                </tbody>
+
+        </table>
+        <div class="text-right">
+             <a href="{{ path ('admin.create') }}" class="btn btn-primary">Créer un nouveau projet</a>
+             </div>
+
+        
+    </div>
+    </div>
+{% endblock %}

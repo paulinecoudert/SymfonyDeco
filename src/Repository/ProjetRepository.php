@@ -41,7 +41,7 @@ class ProjetRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.budget = 1000')
-            ->setMaxResults(2)
+            ->setMaxResults(5)
             ->getQuery()
             ->getResult();
     }

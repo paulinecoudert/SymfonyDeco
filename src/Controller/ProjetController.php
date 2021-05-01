@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Projet;
 use App\Repository\ProjetRepository;
+use Cocur\Slugify\Slugify;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -45,6 +46,6 @@ class ProjetController extends AbstractController
     public function show($slug, $id): Response
     {
         $projet = $this->repository->find($id);
-        return $this->render("front/show.html.twig", ['projet' => $projet,]);
+        return $this->render("front/show.html.twig", ['projet' => $projet]);
     }
 }
