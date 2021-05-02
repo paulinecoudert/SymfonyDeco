@@ -27,7 +27,7 @@ class ProjetRepository extends ServiceEntityRepository
     {
 
         return $this->createQueryBuilder('p')
-            ->andWhere('p.budget = 1000')
+            ->andWhere('p.budget >= 1000')
 
             ->getQuery()
             ->getResult();
@@ -40,8 +40,8 @@ class ProjetRepository extends ServiceEntityRepository
     public function findLatest(): array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.budget = 1000')
-            ->setMaxResults(5)
+            ->andWhere('p.budget >= 1000')
+            ->setMaxResults(6)
             ->getQuery()
             ->getResult();
     }

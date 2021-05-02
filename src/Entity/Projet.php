@@ -5,9 +5,12 @@ namespace App\Entity;
 use App\Repository\ProjetRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ProjetRepository::class)
+ * @UniqueEntity("nom")
  */
 class Projet
 {
@@ -15,6 +18,8 @@ class Projet
         true => 'Finit',
         false => 'A la recherche d\' un artisan '
     ];
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -24,12 +29,14 @@ class Projet
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=5, max=40)
      */
     private $nom;
 
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Range(min=100, max=500000)
      */
     private $budget;
 
@@ -64,6 +71,7 @@ class Projet
 
     /**
      * @ORM\Column(type="string", length=255)
+  
      */
     private $travaux;
 
@@ -89,6 +97,7 @@ class Projet
 
     public function getSlug(): string
     {
+
         return (new Slugify())->slugify($this->nom);
     }
 

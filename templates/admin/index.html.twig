@@ -4,7 +4,14 @@
 
 {% block body %}
 <div class='container mt-4'>
+
     <h2> Gérer les biens</h2>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+            </div>
+    {% endfor %}
 
         <table class="table table-striped">
             <thead>
@@ -15,21 +22,20 @@
                 </thead>
                 <tbody>
                     {% for proj in projets %}
-   
-                   
+
                     <tr>
                         <td>{{proj.nom }}</td>
                         <td>
                             <a href="{{ path ('admin.edit', {id: proj.id} ) }}" class="btn btn-secondary">Editer</a>
+                            <a href="{{ path ('admin.delete', {id: proj.id} ) }}" class="btn btn-danger">Supprimer</a>
                         </td>
-                        
+
                     </tr>
                      {% endfor %}
-                </tbody>
-
         </table>
+
         <div class="text-right">
-             <a href="{{ path ('admin.create') }}" class="btn btn-primary">Créer un nouveau projet</a>
+             <a href="{{ path ('admin.create') }}" class="btn btn-primary" style="margin-bottom: 20px" >Créer un nouveau projet</a>
              </div>
 
         

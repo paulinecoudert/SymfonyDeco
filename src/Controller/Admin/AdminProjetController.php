@@ -30,6 +30,8 @@ class AdminProjetController extends AbstractController
         ]);
     }
 
+
+
     #[Route('/admin/create', name: 'admin.create')]
     public function new(Request $request)
     {
@@ -52,7 +54,8 @@ class AdminProjetController extends AbstractController
         );
     }
 
-    #[Route('/admin/{id}', name: 'admin.edit')]
+
+    #[Route('/admin/edit/{id}', name: 'admin.edit')]
     public function edit(Projet $projets, Request $request)
     {
         $form = $this->createForm(ProjetType::class, $projets);
@@ -60,6 +63,7 @@ class AdminProjetController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
+            $this->addFlash('success', 'Projet modifié avec succès');
             return $this->redirectToRoute('admin.index');
         }
 
@@ -70,5 +74,16 @@ class AdminProjetController extends AbstractController
                 'form' => $form->createView()
             ]
         );
+    }
+
+    #[Route('/admin/delete/{id}', name: 'admin.delete')]
+    public function delete(Projet $projetsSup)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($projetsSup);
+        $em->flush();
+
+        $this->addFlash('success', 'Projet supprimé avec succès');
+        return $this->redirectToRoute('admin.index');
     }
 }
