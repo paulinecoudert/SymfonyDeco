@@ -7,3 +7,6 @@ front.show:
   requirements:
     slug: '[a-z0-9\-]*'
     id: '\d+'
+
+logout:
+  path: /logout

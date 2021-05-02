@@ -6,11 +6,13 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id
@@ -37,7 +39,7 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $login;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -74,10 +76,7 @@ class User
      */
     private $pays;
 
-    /**
-     * @ORM\OneToMany(targetEntity=projet::class, mappedBy="user")
-     */
-    private $projet;
+
 
     public function __construct()
     {
@@ -125,14 +124,14 @@ class User
         return $this;
     }
 
-    public function getLogin(): ?string
+    public function getUsername(): ?string
     {
-        return $this->login;
+        return $this->username;
     }
 
-    public function setLogin(string $login): self
+    public function setUsername(string $username): self
     {
-        $this->login = $login;
+        $this->username = $username;
 
         return $this;
     }
@@ -221,33 +220,56 @@ class User
         return $this;
     }
 
-    /**
-     * @return Collection|projet[]
+    /** 
+     * Returns the rolesc.
+     * 
+     *   public function getRoles()
+     *  {
+     *      return array('ROLE_USER');
+     *  }
+     * @return (Role|string)[] The user roles
      */
-    public function getProjet(): Collection
+
+    public function getRoles()
     {
-        return $this->projet;
+        return ['ROLE_ADMIN'];
     }
 
-    public function addProjet(projet $projet): self
+    /** 
+     * Returns the salt.
+     * 
+    
+     * @return string|null The salt
+     */
+    public function getSalt()
     {
-        if (!$this->projet->contains($projet)) {
-            $this->projet[] = $projet;
-            $projet->setUser($this);
-        }
-
-        return $this;
+        return null;
     }
 
-    public function removeProjet(projet $projet): self
+    /** 
+     * Remove sensitive data from user.
+     * 
+     */
+    public function eraseCredentials()
     {
-        if ($this->projet->removeElement($projet)) {
-            // set the owning side to null (unless already changed)
-            if ($projet->getUser() === $this) {
-                $projet->setUser(null);
-            }
-        }
+    }
 
-        return $this;
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password
+        ]);
+    }
+
+    public function unserialize($data)
+    {
+        list(
+            $this->id,
+            $this->username,
+            $this->password
+
+        ) = unserialize($data, ['allowed_classes' => false]);
     }
 }
