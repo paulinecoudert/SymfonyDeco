@@ -16,18 +16,18 @@ class UserFixtures extends Fixture
     }
     public function load(ObjectManager $manager)
     {
-        $user = new User();
-        $user->setUsername('admin');
-        $user->setPassword($this->encoder->encodePassword($user, 'admin'));
-        $user->setNom('Renard');
-        $user->setPays('Belgique');
-        $user->setCodePostal(1190);
-        $user->setNumero(6);
-        $user->setPrenom('Loic');
-        $user->setRue('Rue de l\'Etoile');
-        $user->setEmail('loic@gmail.com');
-        $user->setVille('Forest');
-        $manager->persist($user);
+        $user2 = new User();
+        $user2->setUsername('test');
+        $user2->setPassword($this->encoder->encodePassword($user2, '1234'));
+        $user2->setNom('Lo');
+        $user2->setPays('Belgique');
+        $user2->setCodePostal(1060);
+        $user2->setNumero(13);
+        $user2->setPrenom('Renata');
+        $user2->setRue('Rue de l\'Abbaye');
+        $user2->setEmail('renata@gmail.com');
+        $user2->setVille('Saint gilles');
+        $manager->persist($user2);
         $manager->flush();
     }
 }

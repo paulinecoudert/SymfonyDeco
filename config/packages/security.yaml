@@ -18,12 +18,12 @@ security:
       anonymous: true
       lazy: true
 
-      form_login:
-        check_path: login
-
       logout:
         path: logout
         target: /
+
+      form_login:
+        check_path: login
 
         # where to redirect after logout
         # target: app_any_route

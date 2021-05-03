@@ -1,12 +1,13 @@
 #index:
 #    path: /
-#    controller: App\Controller\DefaultController::index
+#    controller: App\Controller\DefaultController::login
+
+logout:
+  path: /logout
+
 front.show:
   path: /projet/{slug}-{id}
   controller: App\Controller\ProjetController::show
   requirements:
     slug: '[a-z0-9\-]*'
     id: '\d+'
-
-logout:
-  path: /logout
