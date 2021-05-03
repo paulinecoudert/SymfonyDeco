@@ -1,9 +1,6 @@
 #index:
 #    path: /
-#    controller: App\Controller\DefaultController::login
-
-logout:
-  path: /logout
+#    controller: App\Controller\DefaultController::index
 
 front.show:
   path: /projet/{slug}-{id}
