@@ -46,10 +46,6 @@ class User implements UserInterface, \Serializable
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $dateDeNaissance;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -76,11 +72,20 @@ class User implements UserInterface, \Serializable
      */
     private $pays;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Projet::class, mappedBy="user")
+     */
+    private $projets;
+
+
+
+
 
 
     public function __construct()
     {
         $this->projet = new ArrayCollection();
+        $this->projets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -148,17 +153,7 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getDateDeNaissance(): ?\DateTimeInterface
-    {
-        return $this->dateDeNaissance;
-    }
 
-    public function setDateDeNaissance(\DateTimeInterface $dateDeNaissance): self
-    {
-        $this->dateDeNaissance = $dateDeNaissance;
-
-        return $this;
-    }
 
     public function getNumero(): ?string
     {
@@ -232,7 +227,7 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return ['ROLE_ADMIN'];
+        return ['ROLE_USER'];
     }
 
     /** 
@@ -271,5 +266,35 @@ class User implements UserInterface, \Serializable
             $this->password
 
         ) = unserialize($data, ['allowed_classes' => false]);
+    }
+
+    /**
+     * @return Collection|Projet[]
+     */
+    public function getProjets(): Collection
+    {
+        return $this->projets;
+    }
+
+    public function addProjet(Projet $projet): self
+    {
+        if (!$this->projets->contains($projet)) {
+            $this->projets[] = $projet;
+            $projet->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjet(Projet $projet): self
+    {
+        if ($this->projets->removeElement($projet)) {
+            // set the owning side to null (unless already changed)
+            if ($projet->getUser() === $this) {
+                $projet->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

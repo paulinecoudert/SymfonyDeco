@@ -22,6 +22,7 @@ class FrontController extends AbstractController
 
 
 
+
     #[Route("/contact", name: 'contact')]
     public function contact(): Response
     {

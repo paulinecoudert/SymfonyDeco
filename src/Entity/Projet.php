@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use App\Repository\ProjetRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ProjetRepository::class)
@@ -74,6 +76,13 @@ class Projet
   
      */
     private $travaux;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
 
 
 
@@ -176,6 +185,18 @@ class Projet
     public function setTravaux(string $travaux): self
     {
         $this->travaux = $travaux;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

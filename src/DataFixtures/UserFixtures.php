@@ -18,7 +18,7 @@ class UserFixtures extends Fixture
     {
         $user2 = new User();
         $user2->setUsername('test');
-        $user2->setPassword($this->encoder->encodePassword($user2, '1234'));
+        $user2->setPassword($this->encoder->encodePassword($user2, '123456'));
         $user2->setNom('Lo');
         $user2->setPays('Belgique');
         $user2->setCodePostal(1060);
@@ -29,5 +29,12 @@ class UserFixtures extends Fixture
         $user2->setVille('Saint gilles');
         $manager->persist($user2);
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            ProjetFixtures::class,
+        ];
     }
 }

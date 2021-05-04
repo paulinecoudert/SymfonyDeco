@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Projet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Migrations\Query\Query;
+use Doctrine\ORM\Query as ORMQuery;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -20,17 +22,14 @@ class ProjetRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Projet[]
+     * @return Query
      */
 
-    public function finAllDemande(): array
+    public function findAllDemandeQuery(): Query
     {
 
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.budget >= 1000')
-
-            ->getQuery()
-            ->getResult();
+        return $this->findDemandeQuery()
+            ->getQuery();
     }
 
     /**
@@ -41,7 +40,7 @@ class ProjetRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.budget >= 1000')
-            ->setMaxResults(6)
+            ->setMaxResults(4)
             ->getQuery()
             ->getResult();
     }
