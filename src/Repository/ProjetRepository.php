@@ -22,14 +22,13 @@ class ProjetRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Query
+     *  @return Projet[]
      */
 
-    public function findAllDemandeQuery(): Query
+    public function findDemandeQuery(): array
     {
 
-        return $this->findDemandeQuery()
-            ->getQuery();
+        return $this->findAll();
     }
 
     /**
