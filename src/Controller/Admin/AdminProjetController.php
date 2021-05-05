@@ -24,13 +24,14 @@ class AdminProjetController extends AbstractController
     public function index(): Response
     {
 
-        $projets = $this->repository->findAll();
+        $projets = $this->getUser()->getProjets();
+        // dd($this->getUser());
         return $this->render('admin/index.html.twig', [
             'projets' => $projets
         ]);
     }
 
-
+    //Creer projet 
 
     #[Route('/admin/create', name: 'admin.create')]
     public function new(Request $request)
@@ -40,6 +41,7 @@ class AdminProjetController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $newProjet->setUser($this->getUser());
             $this->em->persist($newProjet);
             $this->em->flush();
             return $this->redirectToRoute('admin.index');

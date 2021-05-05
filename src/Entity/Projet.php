@@ -9,10 +9,15 @@ use Cocur\Slugify\Slugify;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File;
+use Symfony\Component\HttpFoundation\File\File as FileFile;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 /**
  * @ORM\Entity(repositoryClass=ProjetRepository::class)
  * @UniqueEntity("nom")
+ * @Vich\Uploadable()
  */
 class Projet
 {
@@ -60,9 +65,19 @@ class Projet
     }
 
     /**
+     * @var string|null
      * @ORM\Column(type="string", length=255)
+     * 
      */
-    private $photo;
+    private $filename;
+
+    /**
+     * @var File|null
+     * @Vich\UploadableField(mapping="property_image", fileNameProperty="filename")
+     * 
+     */
+    private $imageFile;
+
 
     /**
      * @ORM\Column(type="boolean")
@@ -82,6 +97,7 @@ class Projet
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
 
 
 
@@ -148,17 +164,6 @@ class Projet
         return $this;
     }
 
-    public function getPhoto(): ?string
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto(string $photo): self
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
 
     public function getStatut(): ?bool
     {
@@ -197,6 +202,57 @@ class Projet
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of filename
+     *
+     * @return  string|null
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * Set the value of filename
+     *
+     * @param  string|null  $filename
+     *
+     * @return  self
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of imageFile
+     *
+     * @return  File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set the value of imageFile
+     *
+     * @param  File  $imageFile
+     *
+     * @return  self
+     */
+    public function setImageFile(FileFile $imageFile)
+    {
+        $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->dateDeDebut = new \DateTime('now');
+        }
 
         return $this;
     }

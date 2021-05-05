@@ -10,13 +10,16 @@
         {% for proj in projetss %}
             <div class="col-3">
                 <div class="card">
+                       {% if proj.filename %}
+                      <img src="{{ vich_uploader_asset(proj, 'imageFile')  }}" alt="card-img-top" style="width: 100%; height:170px;">
+                       {% else %}
+                        <img src="{{ 'assets/img/Ixina.jpg'  }}" alt="card-img-top" style="width: 100%; height:170px;">
+                       {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">
                             <a href="{{ path('front.show', {id: proj.id, slug: proj.slug}) }}">{{ proj.nom }}</a>
                             </h5>
-                            <div class="portfolio-img d-flex align-items-center justify-content-center">
-                            <img class="img-fluid" src="{{asset('assets/img/portfolio-1.jpg')}}" alt="">
-                        </div>
+                            
                         <p class="card-text">{{ proj.description }}</p>
                            <p class="card-text">{{ proj.user.nom }}</p>
                        

@@ -19,7 +19,9 @@ class ProjetType extends AbstractType
             ->add('budget')
             ->add('description')
             ->add('dateDeDebut')
-            ->add('photo')
+            ->add('imageFile', FileType::class, [
+                'required' => false
+            ])
 
             ->add('statut', ChoiceType::class, ['choices' => $this->getChoices()])
             ->add('travaux');

@@ -1,6 +1,20 @@
 
 
 {{ form_start(form) }}
+
+<div class="row">
+<div class="col-md-4">{{ form_row(form.nom)}}</div>
+<div class="col-md-4">{{ form_row(form.budget)}}</div>
+<div class="col-md-4">{{ form_row(form.travaux)}}</div>
+<div class="col-md-8">{{ form_row(form.description)}}</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">{{ form_row(form.dateDeDebut)}}</div>
+<div class="col-md-4">{{ form_row(form.imageFile)}}</div>
+<div class="col-md-4">{{ form_row(form.statut)}}</div>
+</div>
+
 {{ form_widget(form) }}
 <button class="btn btn-primary">{{button|default('Créer')}}</button>
 {{ form_end(form) }}
