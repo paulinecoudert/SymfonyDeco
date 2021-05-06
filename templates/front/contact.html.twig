@@ -3,7 +3,7 @@
 {% block body %}
 
 
-    <!-- Page Header Start -->
+    {# <!-- Page Header Start -->
     <div class="container-fluid bg-secondary py-5">
         <div class="container py-5">
             <div class="row align-items-center py-4">
@@ -20,15 +20,15 @@
             </div>
         </div>
     </div>
-    <!-- Page Header Start -->
+    <!-- Page Header Start --> #}
 
 
     <!-- Contact Start -->
     <div class="container-fluid bg-white">
         <div class="container">
             <div class="row">
-                <div class="col-lg-5">
-                    <div class="d-flex flex-column justify-content-center bg-primary h-100 p-5">
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column justify-content-center bg-primary h-95 p-5 mt-5">
                         <div class="d-inline-flex border border-secondary p-4 mb-4">
                             <h1 class="flaticon-office font-weight-normal text-secondary m-0 mr-3"></h1>
                             <div class="d-flex flex-column">
@@ -52,22 +52,37 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7 mb-5 my-lg-5 py-5 pl-lg-5">
-                    <div class="contact-form">
+                <div class="col-lg-7 mb-7 my-lg-5 py-5 pl-lg-5 " >
+                    <h1 style="margin-bottom:50px">Contact</h1>
+                    <div class="contact-form" >
+                        
                         <div id="success"></div>
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                             {{ form_start(form)}}
+    <div class='row'>
+    <div class="col">{{ form_row(form.nom)}}</div>
+  
+    </div>
+    <div class='row'>
+    <div class="col">{{ form_row(form.email)}}</div>
+    
+    </div>
+<div class='row'>
+    <div class="col">{{ form_row(form.message)}}</div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Envoyer</button>
+    </div>
+     {{ form_end(form)}}
+                        {# <form name="sentMessage" id="contactForm" novalidate="novalidate">
                             <div class="control-group">
-                                <input type="text" class="form-control p-4" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                                <input type="text" class="form-control p-4" id="nom" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
                                 <input type="email" class="form-control p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
                                 <p class="help-block text-danger"></p>
                             </div>
-                            <div class="control-group">
-                                <input type="text" class="form-control p-4" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
-                                <p class="help-block text-danger"></p>
-                            </div>
+                         
                             <div class="control-group">
                                 <textarea class="form-control p-4" rows="6" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
                                 <p class="help-block text-danger"></p>
@@ -75,7 +90,7 @@
                             <div>
                                 <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Send Message</button>
                             </div>
-                        </form>
+                        </form> #}
                     </div>
                 </div>
             </div>

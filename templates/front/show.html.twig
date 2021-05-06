@@ -3,19 +3,47 @@
 {% block body %}
 <div class="jumbotron">
     <div class="container">
+
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+            </div>
+            {% endfor %}
      <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
+         <div class="col-md-16">
                      
+                     <h2>Travaux: {{ projet.travaux}} 
+                     </div>
+                      <div class="text-primary" style="font-size: 2rem; font-weight: bold;">Budget: {{ projet.budget}} euros</div>
                       <img src=" /assets/img/{{projet.fileName}} " alt="card-img-top" style="width: 70%; height:auto;">
                       
             </div>
-            <div class="col-md-4">
-    <h1>{{ projet.nom}} </h1>
-     <h2>Travaux: {{ projet.travaux}} </h2>
-    <div class="text-primary" style="font-size: 2rem; font-weight: bold;">{{ projet.budget}} euros</div>
-    
-     <a href="#" class="btn btn-primary">Contacter le propriétaire</a>
+            <div class="col-md-5">
+<h1>{{ projet.nom}}</h1>
+     <p class="text-primary">Si vous êtes un artisan et que vous êtes intéressés par le projet merci de remplir
+     le formulaire ci dessous qui sera soumis au propriétaire</p>
+     <div id="artisanForm" class="mt-4">
+     {{ form_start(form)}}
+    <div class='row'>
+    <div class="col">{{ form_row(form.nom)}}</div>
+    <div class="col">{{ form_row(form.metier)}}</div>
     </div>
+    <div class='row'>
+    <div class="col">{{ form_row(form.email)}}</div>
+    
+    </div>
+<div class='row'>
+    <div class="col">{{ form_row(form.description)}}</div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Envoyer</button>
+    </div>
+     {{ form_end(form)}}
+     </div>
+
+    </div>
+
 </div>
 </div>
 </div>
