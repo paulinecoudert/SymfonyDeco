@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>iDESIGN - Interior Design HTML Template</title>
+    <title>iDECO - La solution à la Renovation</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -72,7 +72,7 @@
         <div class="container position-relative" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
                 <a href="" class="navbar-brand">
-                    <h1 class="m-0 display-5 text-white"><span class="text-primary">i</span>DESIGN</h1>
+                    <h1 class="m-0 display-5 text-white"><span class="text-primary">i</span>DECO</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -84,7 +84,6 @@
                     <a href='{{path ('projet' )}}' class="nav-item nav-link active">Tous les projets</a>
                      <a href='{{path ('contact' )}}' class="nav-item nav-link active">Contact</a>
                      <a href='{{path ('login' )}}' class="nav-item nav-link active">Login</a>
-                      <a href='{{path ('logout' )}}' class="nav-item nav-link active">Logout</a>
                      <a href='{{path ('app_register' )}}' class="nav-item nav-link active">Inscription</a>
 
                     </div>
@@ -103,8 +102,8 @@
                     <div class="d-inline-flex text-left">
                         <h1 class="flaticon-office font-weight-normal text-primary m-0 mr-3"></h1>
                         <div class="d-flex flex-column">
-                            <h5>Our Office</h5>
-                            <p class="m-0">123 Street, New York, USA</p>
+                            <h5>Notre Bureau</h5>
+                            <p class="m-0">Brussel, Belgium</p>
                         </div>
                     </div>
                 </div>
@@ -112,8 +111,8 @@
                     <div class="d-inline-flex text-left">
                         <h1 class="flaticon-email font-weight-normal text-primary m-0 mr-3"></h1>
                         <div class="d-flex flex-column">
-                            <h5>Email Us</h5>
-                            <p class="m-0">info@example.com</p>
+                            <h5>Notre Email</h5>
+                            <p class="m-0">info@ideco.be</p>
                         </div>
                     </div>
                 </div>
@@ -121,8 +120,8 @@
                     <div class="d-inline-flex text-left">
                         <h1 class="flaticon-telephone font-weight-normal text-primary m-0 mr-3"></h1>
                         <div class="d-flex flex-column">
-                            <h5>Call Us</h5>
-                            <p class="m-0">+012 345 6789</p>
+                            <h5>Appellez-nous</h5>
+                            <p class="m-0">+32 (0)2 345 678</p>
                         </div>
                     </div>
                 </div>
@@ -138,11 +137,11 @@
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-md-5">
         <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Get In Touch</h4>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+            <div class="col-lg-4 col-md-6 mb-5">
+                <h4 class="text-primary mb-4">Restons En Contact</h4>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Brussel, Belgium</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+32 (0)2 345 678</p>
+                <p><i class="fa fa-envelope mr-2"></i>info@ideco.be</p>
                 <div class="d-flex justify-content-start mt-4">
                     <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -150,45 +149,32 @@
                     <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+            <div class="col-lg-4 col-md-6 mb-5">
                 <h4 class="text-primary mb-4">Quick Links</h4>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Services</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Projects</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                    <a class="text-white mb-2" href="{{path ('index' )}}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="{{path ('projet' )}}"><i class="fa fa-angle-right mr-2"></i>Les projets</a>
+                    <a class="text-white mb-2" href="{{path ('contact' )}}"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                    <a class="text-white mb-2" href="{{path ('login' )}}"><i class="fa fa-angle-right mr-2"></i>Login</a>
+                    <a class="text-white" href="{{path ('app_register' )}}"><i class="fa fa-angle-right mr-2"></i>Inscription</a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+            <div class="col-lg-4 col-md-6 mb-5">
                 <h4 class="text-primary mb-4">Popular Links</h4>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Services</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Projects</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                 <a class="text-white mb-2" href="{{path ('index' )}}"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="{{path ('projet' )}}"><i class="fa fa-angle-right mr-2"></i>Les projets</a>
+                    <a class="text-white mb-2" href="{{path ('contact' )}}"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                    <a class="text-white mb-2" href="{{path ('login' )}}"><i class="fa fa-angle-right mr-2"></i>Login</a>
+                    <a class="text-white" href="{{path ('app_register' )}}"><i class="fa fa-angle-right mr-2"></i>Inscription</a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Newsletter</h4>
-                <form action="">
-                    <div class="form-group">
-                        <input type="text" class="form-control border-0" placeholder="Your Name" required="required" />
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control border-0" placeholder="Your Email" required="required" />
-                    </div>
-                    <div>
-                        <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Submit Now</button>
-                    </div>
-                </form>
-            </div>
+            
         </div>
         <div class="container border-top border-secondary pt-5">
             <p class="m-0 text-center text-white">
-                &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
-                <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+                &copy; <a class="text-white font-weight-bold" href="#">IDECO</a>. All Rights Reserved. Designed by
+                <a class="text-white font-weight-bold" href="">Pauline Coudert</a>
             </p>
         </div>
     </div>
