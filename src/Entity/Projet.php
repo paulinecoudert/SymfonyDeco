@@ -25,7 +25,17 @@ class Projet
         true => 'Finit',
         false => 'A la recherche d\' un artisan '
     ];
-
+    const TRAVAUX = [
+        1 => 'Electricien',
+        2 => 'Peintre',
+        3 => 'Plombier',
+        4 => 'Renovation sdb',
+        5 => 'Renovation cuisine',
+        6 => 'Poseur de sol',
+        7 => 'Poseur papier peint',
+        8 => 'Demolition mur',
+        9 => 'Renovation mur',
+    ];
 
     /**
      * @ORM\Id
@@ -87,8 +97,7 @@ class Projet
 
 
     /**
-     * @ORM\Column(type="string", length=255)
-  
+     * @ORM\Column(type="integer")
      */
     private $travaux;
 
@@ -182,17 +191,7 @@ class Projet
         return self::STATUT[$this->statut];
     }
 
-    public function getTravaux(): ?string
-    {
-        return $this->travaux;
-    }
 
-    public function setTravaux(string $travaux): self
-    {
-        $this->travaux = $travaux;
-
-        return $this;
-    }
 
     public function getUser(): ?User
     {
@@ -255,5 +254,31 @@ class Projet
         }
 
         return $this;
+    }
+
+    /**
+     * Get the value of travaux
+     */ 
+    public function getTravaux()
+    {
+        return $this->travaux;
+    }
+
+    /**
+     * Set the value of travaux
+     *
+     * @return  self
+     */ 
+    public function setTravaux($travaux)
+    {
+        $this->travaux = $travaux;
+
+        return $this;
+    }
+
+    public function getTravauxType(): string
+    {
+
+        return self::TRAVAUX[$this->travaux];
     }
 }

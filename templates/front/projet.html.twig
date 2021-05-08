@@ -4,8 +4,40 @@
 
 {% block body %}
 
+
+
+
 <div class='container'>
-    <h2> Tous les biens</h2>
+<div class='jumbotron '>
+<div class="row justify-content-center">
+                <div class="col-lg-10 col-md-8 col text-center mb-4">
+                  <h1 class="mb-4">Tous les projets de nos clients</h1>
+                    <h6 class="text-primary font-weight-normal text-uppercase mb-3">Voir par filtres</h6>
+                
+<div class='container '>
+{{ form_start(form)}}
+
+    <div class="form-row align-items-end">
+        <div class="col">
+        {{ form_row (form.budget)}}
+        </div>
+        <div class="col">
+        {{ form_row (form.travaux)}}
+        </div>
+
+<div class="col ">
+<div class="form-group">
+<button class="btn btn-primary">Recherche</button>
+</div>
+</div>
+</div>
+{{ form_end(form)}}
+</div>
+</div>
+                  
+                </div>
+            </div>
+
    <div class="row flex mb-3" >
         {% for proj in projetss %}
             <div class="col-3">
@@ -19,7 +51,7 @@
                         <h5 class="card-title">
                             <a href="{{ path('front.show', {id: proj.id, slug: proj.slug}) }}">{{ proj.nom }}</a>
                             </h5>
-                            
+                        <p class="card-text">{{ proj.travauxType }}</p>    
                         <p class="card-text">{{ proj.description }}</p>
                            <p class="card-text">{{ proj.user.nom }}</p>
                        

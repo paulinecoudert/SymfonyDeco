@@ -24,7 +24,7 @@ class ProjetType extends AbstractType
             ])
 
             ->add('statut', ChoiceType::class, ['choices' => $this->getChoices()])
-            ->add('travaux');
+            ->add('travaux',ChoiceType::class, ['choices' => $this->getChoicesTravaux()]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -38,6 +38,16 @@ class ProjetType extends AbstractType
     private function getChoices()
     {
         $choices = Projet::STATUT;
+        $output = [];
+        foreach ($choices as $k => $v) {
+            $output[$v] = $k;
+        }
+        return $output;
+    }
+
+    private function getChoicesTravaux()
+    {
+        $choices = Projet::TRAVAUX;
         $output = [];
         foreach ($choices as $k => $v) {
             $output[$v] = $k;

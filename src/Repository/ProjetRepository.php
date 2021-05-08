@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Projet;
+use App\Entity\ProjetSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Migrations\Query\Query;
 use Doctrine\ORM\Query as ORMQuery;
@@ -23,13 +24,25 @@ class ProjetRepository extends ServiceEntityRepository
 
     /**
      *  @return Projet[]
+     * 
      */
 
-    public function findDemandeQuery(): array
+    public function findDemandeQuery(ProjetSearch $search): array
     {
 
+        if ($search->getBudget() && $search->getTravaux()) {
+            return $this->createQueryBuilder('p')
+                ->andWhere('p.budget >= :budget')
+                ->andWhere('p.travaux = :travaux')
+                ->setParameter('budget', $search->getBudget())
+                ->setParameter('travaux', $search->getTravaux())
+                ->getQuery()
+                ->getResult();
+        }
         return $this->findAll();
     }
+
+
 
     /**
      * @return Projet[]
@@ -43,6 +56,8 @@ class ProjetRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+
 
     // /**
     //  * @return Projet[] Returns an array of Projet objects

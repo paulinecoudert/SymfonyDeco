@@ -4,8 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Artisan;
 use App\Entity\Projet;
-
+use App\Entity\ProjetSearch;
 use App\Form\ArtisanType;
+use App\Form\ProjetSearchType;
 use App\Notification\ArtisanNotification;
 use Cocur\Slugify\Slugify;
 use App\Repository\ProjetRepository;
@@ -35,16 +36,19 @@ class ProjetController extends AbstractController
     public function projet(PaginatorInterface $paginator, Request $request): Response
 
     {
+        $search = new ProjetSearch();
+        $form = $this->createForm(ProjetSearchType::class, $search);
+        $form->handleRequest($request);
 
         $projetss = $paginator->paginate(
-            $this->repository->findDemandeQuery(),
+            $this->repository->findDemandeQuery($search),
             $request->query->getInt('page', 1),
             12,
         );
 
         //dump($projetss);
 
-        return $this->render("front/projet.html.twig", ['projetss' => $projetss]);
+        return $this->render("front/projet.html.twig", ['projetss' => $projetss, 'form' => $form->createView()]);
     }
 
     #[Route("/projet", name: 'projet')]
