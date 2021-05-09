@@ -3,11 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Projet;
+use App\Entity\User;
 use App\Form\ProjetType;
+use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProjetRepository;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,14 +23,20 @@ class AdminProjetController extends AbstractController
         $this->em = $em;
     }
 
+
+
+
+
     #[Route('/admin', name: 'admin.index')]
     public function index(): Response
     {
 
         $projets = $this->getUser()->getProjets();
+
         // dd($this->getUser());
         return $this->render('admin/index.html.twig', [
-            'projets' => $projets
+            'projets' => $projets,
+
         ]);
     }
 
@@ -87,5 +96,43 @@ class AdminProjetController extends AbstractController
 
         $this->addFlash('success', 'Projet supprimé avec succès');
         return $this->redirectToRoute('admin.index');
+    }
+
+    #[Route('/admin/monprojet', name: 'admin.monprojet')]
+    public function monprojet(): Response
+    {
+
+        $projets = $this->getUser()->getProjets();
+
+        // dd($this->getUser());
+        return $this->render('admin/monprojet.html.twig', [
+            'projets' => $projets,
+        ]);
+    }
+
+    #[Route('/admin/monprofil', name: 'admin.monprofil')]
+    public function monprofil(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $this->addFlash('success', 'Profil modifié avec succès');
+            return $this->redirectToRoute('admin.index');
+        }
+        return $this->render('admin/monprofil.html.twig', [
+            'user' => $user,
+            'form' => $form->createView()
+        ]);
     }
 }
