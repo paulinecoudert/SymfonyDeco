@@ -18,7 +18,7 @@ class ProjetFixtures extends Fixture
             $projet->setNom("Des murs neufs " . $count);
             $projet->setTravaux("peinture" . $count);
             $projet->setStatut(1 . $count);
-            $projet->setPhoto("MurBleu.jpg" . $count);
+            $projet->setFilename("MurBleu.jpg" . $count);
             $projet->setDescription("la djfg sdksjf" . $count);
             $projet->setBudget(1000 . $count);
 
