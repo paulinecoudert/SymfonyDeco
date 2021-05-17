@@ -1,3 +1,4 @@
+
 {% extends "base.html.twig" %}
 
 {% block title "tous nos biens"%}
@@ -40,7 +41,7 @@
 
    <div class="row flex mb-3" >
         {% for proj in projetss %}
-            <div class="col-3">
+            <div class="col-3 mb-3">
                 <div class="card">
                        {% if proj.filename %}
                       <img src="{{ vich_uploader_asset(proj, 'imageFile')  }}" alt="card-img-top" style="width: 100%; height:170px;">
@@ -53,7 +54,7 @@
                             </h5>
                         <p class="card-text">{{ proj.travauxType }}</p>    
                         <p class="card-text">{{ proj.description }}</p>
-                           <p class="card-text">{{ proj.user.nom }}</p>
+                           {# <p class="card-text">{{ proj.user.nom }}</p> #}
                        
                         <div class='text-primary'>{{proj.budget | number_format (0,'',' ' )}} euros</div>
                             </div>
@@ -61,7 +62,7 @@
                             </div>
         {% endfor %}
 
-        <div class="pagination">
+        <div class="pagination mb-2 ">
                 {{ knp_pagination_render(projetss) }}
             </div>
        {% endblock %}

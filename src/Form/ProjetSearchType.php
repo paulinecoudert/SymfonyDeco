@@ -19,7 +19,7 @@ class ProjetSearchType extends AbstractType
                 'required' => false,
                 'label' => 'Budget',
                 'attr' => [
-                    'placeholder' => 'Budget maximal'
+                    'placeholder' => 'Budget maximum'
                 ]
             ])
             ->add(

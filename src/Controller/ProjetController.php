@@ -43,7 +43,7 @@ class ProjetController extends AbstractController
         $projetss = $paginator->paginate(
             $this->repository->findDemandeQuery($search),
             $request->query->getInt('page', 1),
-            12,
+            8,
         );
 
         //dump($projetss);

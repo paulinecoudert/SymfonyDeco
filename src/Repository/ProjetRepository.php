@@ -32,7 +32,7 @@ class ProjetRepository extends ServiceEntityRepository
 
         if ($search->getBudget() && $search->getTravaux()) {
             return $this->createQueryBuilder('p')
-                ->andWhere('p.budget >= :budget')
+                ->andWhere('p.budget <= :budget')
                 ->andWhere('p.travaux = :travaux')
                 ->setParameter('budget', $search->getBudget())
                 ->setParameter('travaux', $search->getTravaux())
