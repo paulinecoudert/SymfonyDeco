@@ -49,21 +49,7 @@ INSERT INTO `projet` (`id`, `nom`, `budget`, `travaux`, `description`, `date_de_
 --
 
 --
--- Index pour la table `projet`
---
-ALTER TABLE `projet`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_50159CA9A76ED395` (`user_id`);
 
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `projet`
---
-ALTER TABLE `projet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Contraintes pour les tables déchargées
@@ -72,9 +58,7 @@ ALTER TABLE `projet`
 --
 -- Contraintes pour la table `projet`
 --
-ALTER TABLE `projet`
-  ADD CONSTRAINT `FK_50159CA9A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

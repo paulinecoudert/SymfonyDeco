@@ -39,8 +39,9 @@ class FrontController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             // $notification->notify($contact);
-            // $this->addFlash('success', 'votre email a bien été envoyé');
             $notification->notify($contact);
+            // $this->addFlash('success', 'votre email a bien été envoyé');
+            $this->addFlash('success', 'votre email a bien été envoyé vous aurez une réponse sous 48h');
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($contact);
             $entityManager->flush();
