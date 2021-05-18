@@ -1,65 +1,10 @@
--- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1
--- Généré le : mar. 18 mai 2021 à 10:03
--- Version du serveur :  10.4.17-MariaDB
--- Version de PHP : 8.0.2
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `wad03`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `user`
---
-
---
--- Déchargement des données de la table `user`
---
-
 INSERT INTO `user` (`id`, `nom`, `prenom`, `email`, `username`, `password`, `numero`, `rue`, `code_postal`, `ville`, `pays`) VALUES
 (3, 'Renardo', 'Loic', 'loic@gmail.com', 'admin', '$argon2id$v=19$m=65536,t=4,p=1$ODhlbXRHcGdNQlJaV2t6SQ$YiYH219dRjN5k354fcpmzXhy8CfrjSaFX8D9LEK+azY', '6', 'Rue de l\'Etoile', '1190', 'Forest', 'Belgique'),
 (6, 'Lo', 'Renata', 'renata@gmail.com', 'test', '$argon2id$v=19$m=65536,t=4,p=1$UVJXdUhwYkREZkFYV1hjNg$6ZNbRsblmP7bGaxLz9aCEVj6UmpXddDK2JrXRgZdLH0', '13', 'Rue de l\'Abbaye', '1060', 'Saint gilles', 'Belgique'),
 (7, 'Lee', 'ly', 'ly@gmail.com', 'ly', '$argon2id$v=19$m=65536,t=4,p=1$aG11UGlvdGl6YzFXRGE0aA$fuc3rYzrCtBJNj99o+iHZuq4W3CMFSh4TMNkoQfVvYs', '23', 'des eperons', '1000', 'Bruxelles', 'belgique'),
 (10, 'der', 'fred', 'fred@yahoo.fr', 'fred', '$argon2id$v=19$m=65536,t=4,p=1$NjNwZlowRmRIbG00SUhwYg$5r6O5czqHMrf7CnH3l4BA+2gVNn6zOmUY9SHYWd99ZA', '12', 'Blaes', '1000', 'Bruxelles', 'Belgique'),
 (16, 'feu', 'felix', 'feu@gmail.com', 'feu', '$argon2id$v=19$m=65536,t=4,p=1$RHJ5djFtNU9NZUZmVTJjSg$/RuHovHGX8hRYQnWxT7An+q8+7NqeQ/STdUIkVDssxg', '54', 'Albert', '1190', 'Forest', 'Belgique'),
-(17, 'Grass', 'sarah', 'fred@yahoo.fr', 'gracias', '$argon2id$v=19$m=65536,t=4,p=1$SUlmdHkyaWxkWkd1TEIzSQ$CRVMdldw/w9PZFWdJ/IHbkhBDUERbguTLEhZQZCGUA0', '45', 'Albert', '1190', 'Forest', 'Belgique');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+(17, 'Grass', 'sarah', 'fred@yahoo.fr', 'gracias', '$argon2id$v=19$m=65536,t=4,p=1$SUlmdHkyaWxkWkd1TEIzSQ$CRVMdldw/w9PZFWdJ/IHbkhBDUERbguTLEhZQZCGUA0', '45', 'Albert', '1190', 'Forest', 'Belgique'),
+(24, 'Blutet', 'Lara', 'lara@mail.be', 'lara', '$argon2id$v=19$m=65536,t=4,p=1$MktrZ2ZlNE5YMTEvV3NDMQ$Idaiod22KAzwPZ7qC/M24zi4oVYT+DNRJHZ6bXeznlQ', '54', 'Chaussée d\'Alsemberg', '1180', 'Uccle', 'Belgique'),
+(25, 'Pau', 'line', 'pau@line.com', 'pau', '$argon2id$v=19$m=65536,t=4,p=1$OFk1TURNaHZha3lxSFIyUg$NVmKkET/7yNFJfVBNk+hwxWCUJ1Bizpc9aw0vIc12+4', '43', 'Rue de la monnaie', '1000', 'Bruxelles', 'Belgique'),
+(26, 'Pauline', 'line', 'pauline@gmail.com', 'pauline', '$argon2id$v=19$m=65536,t=4,p=1$NUFCb3EyNVRGRWNwOW10aQ$P6HUseNxbBelLd5AIf3EkwHRab1Dh7oZ7Sk/GssaUMQ', '45', 'Chaussée d\'Alsemberg', '1190', 'Forest', 'Belgique');
