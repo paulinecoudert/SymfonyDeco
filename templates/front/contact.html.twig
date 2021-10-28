@@ -58,18 +58,19 @@
                     </div>
                 </div>
                 <div class="col-lg-7 mb-7 my-lg-5 py-5 pl-lg-5 " >
+                          {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
                     <h1 style="margin-bottom:50px">Contact</h1>
                     <div class="contact-form" >
-                        
-                        <div id="success"></div>
                              {{ form_start(form)}}
     <div class='row'>
     <div class="col">{{ form_row(form.nom)}}</div>
-  
     </div>
     <div class='row'>
     <div class="col">{{ form_row(form.email)}}</div>
-    
     </div>
 <div class='row'>
     <div class="col">{{ form_row(form.message)}}</div>
@@ -87,7 +88,6 @@
                                 <input type="email" class="form-control p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
                                 <p class="help-block text-danger"></p>
                             </div>
-                         
                             <div class="control-group">
                                 <textarea class="form-control p-4" rows="6" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
                                 <p class="help-block text-danger"></p>

@@ -29,7 +29,7 @@ class CustomFixtures extends Fixture
             // $cnx->commit();
             // $manager->flush();
             // $stmt = $cnx->prepare($content);
-            // $stmt->execute();    
+            // $stmt->execute();
         }
     }
 }
